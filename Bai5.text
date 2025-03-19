@@ -1,0 +1,90 @@
+Bài toán yêu cầu xây dựng một chương trình thao tác với ngày, tháng, năm. Cụ thể, chương trình có các chức năng sau:
+- Nhập vào một ngày, tháng, năm hợp lệ. Nếu ngày nhập không hợp lệ (ví dụ: 30/2/2023), yêu cầu nhập lại.
+- Tính và hiển thị ngày kế tiếp (Next day).
+    Nếu ngày hiện tại là ngày cuối cùng của tháng thì ngày kế tiếp sẽ là ngày 1 của tháng tiếp theo.
+    Nếu ngày hiện tại là 31/12 thì ngày kế tiếp sẽ là 01/01 của năm sau
+- Tính và hiển thị ngày trước đó (Before day).
+    Nếu ngày hiện tại là ngày đầu tiên của tháng thì ngày trước đó sẽ là ngày cuối cùng của tháng trước.
+    Nếu ngày hiện tại là 01/01 thì ngày trước đó sẽ là 31/12 của năm trước.
+- Xác định thứ trong tuần của ngày đã nhập.
+    Dùng công thức Zeller để tính thứ trong tuần (Monday, Tuesday,...).
+    In ra thứ tương ứng bằng tiếng Việt (Thứ Hai, Thứ Ba, ...).
+Test Case 1:  
+Input:  
+1 1 2024  
+Output:  
+2/1/2024  
+31/12/2023  
+Thu Hai  
+
+Test Case 2:  
+Input:  
+29 2 2024  
+Output:  
+1/3/2024  
+28/2/2024  
+Thu Nam  
+
+Test Case 3:  
+Input:  
+28 2 2023  
+Output:  
+1/3/2023  
+27/2/2023  
+Thu Ba  
+
+Test Case 4:  
+Input:  
+31 12 2022  
+Output:  
+1/1/2023  
+30/12/2022  
+Thu Bay  
+
+Test Case 5:  
+Input:  
+15 8 2025  
+Output:  
+16/8/2025  
+14/8/2025  
+Thu Sau  
+
+Test Case 6:  
+Input:  
+30 6 2021  
+Output:  
+1/7/2021  
+29/6/2021  
+Thu Tu  
+
+Test Case 7:  
+Input:  
+1 3 2020  
+Output:  
+2/3/2020  
+29/2/2020  
+Thu Hai  
+
+Test Case 8:  
+Input:  
+31 10 2023  
+Output:  
+1/11/2023  
+30/10/2023  
+Thu Ba  
+
+Test Case 9:  
+Input:  
+15 9 2019  
+Output:  
+16/9/2019  
+14/9/2019  
+Chu nhat  
+
+Test Case 10:  
+Input:  
+1 1 2000  
+Output:  
+2/1/2000  
+31/12/1999  
+Thu Bay  

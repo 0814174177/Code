@@ -1,0 +1,66 @@
+- Bài toán yêu cầu tính giá trị gần đúng của hàm số sin(x) bằng cách sử dụng khai triển Taylor của sin(x)
+- Nhập giá trị x từ bàn phím
+- Tính sin(x) bằng khai triển Taylor
+    Sử dụng công thức Taylor
+    Dùng hàm đệ quy hoặc vòng lặp để tính giai thừa của mỗi số hạng.
+    Dùng vòng lặp để tính tổng của 10 số hạng đầu tiên.
+- Xuất kết quả với 5 chữ số thập phân
+Test Case 1:
+Input:
+1
+Output:
+0.84147
+
+Test Case 2:
+Input:
+3
+Output:
+0.14112
+
+Test Case 3:
+Input:
+0
+Output:
+0.00000
+
+Test Case 4:
+Input:
+-1
+Output:
+-0.84147
+
+Test Case 5:
+Input:
+2
+Output:
+0.90930
+
+Test Case 6:
+Input:
+-2
+Output:
+-0.90930
+
+Test Case 7:
+Input:
+-3
+Output:
+-0.14112
+
+Test Case 8:
+Input:
+10
+Output:
+-0.54402
+
+Test Case 9:
+Input:
+-10
+Output:
+0.54402
+
+Test Case 10:
+Input:
+30
+Output:
+-0.98803

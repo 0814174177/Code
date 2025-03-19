@@ -1,0 +1,239 @@
+Chương trình quản lý danh sách sinh viên với các thông tin gồm:
+    Tên sinh viên (Name)
+    Điểm Toán (Maths)
+    Điểm Ngữ văn (Language)
+    Điểm Tiếng Anh (English)
+Chương trình cung cấp các chức năng sau:
+    Nhập và kiểm tra dữ liệu đầu vào.
+    Tính điểm trung bình và xếp loại sinh viên.
+    Sắp xếp danh sách theo điểm trung bình hoặc điểm Toán.
+    Tìm sinh viên có điểm trung bình cao nhất.
+    Tìm sinh viên theo tên.
+    Tìm sinh viên có điểm Toán thấp nhất.
+    1. Lớp list_student
+Lớp này chứa thông tin về một sinh viên, bao gồm:
+
+Thuộc tính:
+
+    string Name : Tên sinh viên.
+    double Maths, Language, English : Điểm số của các môn học.
+    Phương thức:
+
+Hàm khởi tạo:
+
+    list_student() : Khởi tạo đối tượng với điểm số mặc định là 0.
+    list_student(double x, double y, double z) : Khởi tạo đối tượng với điểm Toán, Văn, Anh do người dùng nhập vào.
+    Getter & Setter: Lấy và đặt giá trị của các thuộc tính.
+
+Hàm nhập dữ liệu (void in()): Nhập thông tin sinh viên từ bàn phím. Kiểm tra dữ liệu nhập vào có hợp lệ hay không.
+
+Hàm kiểm tra dữ liệu nhập vào:
+
+    bool C_Name() : Kiểm tra tên có chứa ký tự không hợp lệ hay không.
+    bool Number() : Kiểm tra điểm số có nằm trong khoảng hợp lệ [0,10] không.
+    Hàm tính điểm trung bình (double Average())
+    Môn Toán có trọng số gấp đôi.
+Hàm xếp loại sinh viên (ll Rank_student())
+Hàm xuất thông tin (void out_info()): In ra thông tin sinh viên.
+Hàm xuất điểm trung bình (void out_Average()): In ra điểm trung bình và xếp loại.
+- Các hàm ngoài lớp
+Sắp xếp danh sách sinh viên theo điểm trung bình (Sort_rank):
+
+Sử dụng sort() của C++ để sắp xếp danh sách theo điểm trung bình tăng dần.
+Sắp xếp danh sách theo điểm Toán (Sort_Maths):
+
+Sắp xếp danh sách sinh viên theo điểm Toán.
+Tìm sinh viên có điểm trung bình cao nhất (Top_Average()):
+
+Duyệt qua danh sách và tìm sinh viên có điểm trung bình cao nhất.
+Tìm kiếm sinh viên theo tên (Search_name()):
+
+Nhập vào một chuỗi và tìm sinh viên có tên chứa chuỗi đó.
+Tìm sinh viên có điểm Toán thấp nhất (Search_Bot_Maths()):
+
+Duyệt qua danh sách và tìm sinh viên có điểm Toán thấp nhất.
+
+Test Case 1:
+Input:
+In_Name: Tran Van A
+In_Maths_Language_English: 9 8 9
+
+In_Name: Nguyen Thi B
+In_Maths_Language_English: 7 6 8
+
+In_Name: Le Van C
+In_Maths_Language_English: 5 5 5
+Output:
+Tran Van A
+Average: 8.75
+GIOI
+
+Nguyen Thi B
+Average: 7.25
+KHA
+
+Le Van C
+Average: 5.0
+TB
+
+Tran Van A Max_Average: 8.75
+
+SEARCH NAME (Y/N): N
+Min_Maths:
+Le Van C 5.0
+
+Test Case 2:
+Input:
+n_Name: A
+In_Maths_Language_English: 10 10 10
+
+In_Name: B
+In_Maths_Language_English: 9 9 9
+
+In_Name: C
+In_Maths_Language_English: 8 8 8
+Output:
+A
+Average: 10.0
+XS
+
+B
+Average: 9.0
+XS
+
+C
+Average: 8.0
+GIOI
+
+A Max_Average: 10.0
+
+SEARCH NAME (Y/N): N
+Min_Maths:
+C 8.0
+
+Test Case 3:
+Input:
+In_Name: A
+In_Maths_Language_English: 0 0 0
+
+In_Name: B
+In_Maths_Language_English: 1 1 1
+
+In_Name: C
+In_Maths_Language_English: 2 2 2
+Output:
+A
+Average: 0.0
+YEU
+
+B
+Average: 0.75
+YEU
+
+C
+Average: 1.5
+YEU
+
+C Max_Average: 1.5
+
+SEARCH NAME (Y/N): N
+Min_Maths:
+A 0.0
+
+Test Case 4:
+Input:
+In_Name: A
+In_Maths_Language_English: 3 7 8
+
+In_Name: B
+In_Maths_Language_English: 6 9 10
+
+In_Name: C
+In_Maths_Language_English: 4 5 6
+Output:
+A
+Average: 5.25
+TB
+
+B
+Average: 7.75
+KHA
+
+C
+Average: 4.75
+YEU
+
+B Max_Average: 7.75
+
+SEARCH NAME (Y/N): N
+Min_Maths:
+A 3.0
+
+Test Case 5:
+Input:
+In_Name: Nguyen Van A
+In_Maths_Language_English: 7 6 8
+
+In_Name: Nguyen Van B
+In_Maths_Language_English: 8 7 9
+
+In_Name: Le Van C
+In_Maths_Language_English: 6 5 7
+
+SEARCH NAME (Y/N): Y
+In_Name: Nguyen
+Output:
+Nguyen Van A
+Nguyen Van B
+
+Test Case 6:
+Input:
+In_Name: Nguyen Van A
+In_Maths_Language_English: 7 6 8
+
+In_Name: Nguyen Van B
+In_Maths_Language_English: 8 7 9
+
+In_Name: Le Van C
+In_Maths_Language_English: 6 5 7
+
+SEARCH NAME (Y/N): Y
+In_Name: Pham
+Output:
+Don't have NAME
+
+Test Case 7:
+Input:
+In_Name: Tran Van 123
+Output:
+WRITE AGAIN, INPUT HAVE PROBLEM !!!
+
+Test Case 8:
+Input:
+In_Name: Tran Van G
+In_Maths_Language_English: 11 8 9
+Output:
+WRITE AGAIN, INPUT HAVE PROBLEM !!!
+
+Test Case 9:
+Input:
+In_Name: Tran Van H
+In_Maths_Language_English: abc 8 9
+Output:
+WRITE AGAIN, INPUT HAVE PROBLEM !!!
+
+Test Case 10:
+Input:
+In_Name: X
+In_Maths_Language_English: 3 7 8
+
+In_Name: Y
+In_Maths_Language_English: 4 5 6
+
+In_Name: Z
+In_Maths_Language_English: 3 8 9
+Output:
+Min_Maths:
+X 3.0
+Z 3.0
+

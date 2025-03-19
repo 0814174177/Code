@@ -1,0 +1,51 @@
+Mô tả thuật toán:
+1. Thư viện và khai báo kiểu dữ liệu
+- #include<bits/stdc++.h>: Bao gồm toàn bộ thư viện chuẩn của C++.
+- typedef long long ll;: Định nghĩa ll là kiểu long long để xử lý số lớn.
+2. Định nghĩa lớp Phanso
+- Lớp Phanso có hai thuộc tính:
+    tuso: Tử số của phân số.
+    mauso: Mẫu số của phân số.
+- Ba phương thức:
+    in(): Nhập tử số và mẫu số.
+    rutgon(): Rút gọn phân số.
+    out(): Xuất phân số sau khi rút gọn.
+3. Hàm tìm ước chung lớn nhất (UCLN)
+- Hàm đệ quy tính ước chung lớn nhất (UCLN) của hai số a và b bằng thuật toán Euclid.
+- Nếu một trong hai số bằng 0, trả về số còn lại.
+4.Hàm main() – Điều khiển chương trình
+- Tối ưu I/O: Giúp tăng tốc nhập/xuất dữ liệu.
+- Tạo một đối tượng a của lớp Phanso, gọi lần lượt các phương thức
+- a.in(): Nhập phân số.
+- a.rutgon(): Rút gọn phân số.
+- a.out(): Xuất phân số đã rút gọn.
+Test case 1: 
+- Input:4 8
+- Output:1/2
+Test case 2: 
+- Input:3 5
+- Output:3/5
+Test case 3: 
+- Input:15 10
+- Output:3/2
+Test case 4: 
+- Input:-6 9
+- Output:-2/3
+Test case 5: 
+- Input:8 -12
+- Output:-2/3
+Test case 6: 
+- Input:-10 -20
+- Output:1/2
+Test case 7: 
+- Input:0 7
+- Output:0/1
+Test case 8: 
+- Input:5 0
+- Output:Mau so khong the bang 0
+Test case 9: 
+- Input:1000000 2500000
+- Output:2/5
+Test case 10: 
+- Input:17 19
+- Output:17/19
