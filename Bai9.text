@@ -1,0 +1,202 @@
+1. Mô tả bài toán
+Bài toán yêu cầu xây dựng một hệ thống quản lý các tài khoản tiết kiệm của ngân hàng với 3 loại hình chính:
+
+Tiết kiệm ngắn hạn: thời hạn dưới 6 tháng.
+Tiết kiệm dài hạn: thời hạn trên 6 tháng.
+Tiết kiệm không kỳ hạn.
+Hệ thống cần:
+
+    Nhập và lưu trữ thông tin của mỗi tài khoản, bao gồm mã tài khoản, loại tiết kiệm, tên chủ tài khoản, số chứng minh thư (CMND/ID_Card), ngày tháng (được lưu dưới dạng đối tượng Time) và số tiền gửi.
+    Kiểm tra tính hợp lệ của dữ liệu nhập vào (ví dụ: chỉ cho phép ký tự hợp lệ trong mã số, tên, ID_Card; ngày tháng phải hợp lệ, số tiền phải dương,...).
+    Tìm kiếm thông tin các tài khoản theo mã số hoặc số chứng minh thư bằng cách so sánh chuỗi (có thể tìm kiếm theo phần của chuỗi).
+    Lọc danh sách các tài khoản theo khoảng thời gian (ví dụ: tìm các tài khoản có ngày gửi hoặc ngày sinh nằm trong khoảng thời gian xác định).
+    Sắp xếp danh sách tài khoản theo các tiêu chí như số tiền gửi và thời gian (ngày/tháng/năm) để dễ dàng tra cứu và quản lý.
+    Lớp Time
+Mục đích:
+Quản lý thông tin thời gian (ngày, tháng, năm) với các chức năng nhập xuất, kiểm tra tính hợp lệ và xử lý năm nhuận.
+
+Các hàm thành viên:
+
+    in(): Nhập thông tin ngày, tháng, năm từ bàn phím.
+    out(): Xuất thông tin thời gian theo định dạng ngày/tháng/năm.
+    Leap_year_true_false(): Kiểm tra năm có phải là năm nhuận hay không.
+    Leap_year(): Nếu năm nhuận, điều chỉnh số ngày của tháng 2 thành 29.
+    Accept(): Kiểm tra tính hợp lệ của ngày tháng dựa trên số ngày trong từng tháng và giá trị của ngày, tháng.
+    Lớp Save_money
+Mục đích:
+Quản lý thông tin của các tài khoản tiết kiệm.
+
+Các thuộc tính chính:
+
+    maso: Mã số tài khoản (chỉ chứa ký tự chữ và số).
+    type_Save_money: Loại tiết kiệm, chỉ nhận các giá trị "Nganhan", "Daihan", hoặc "khongkyhan".
+    Name: Tên chủ tài khoản (chỉ chứa chữ cái và khoảng trắng, độ dài không quá 30 ký tự).
+    ID_Card: Số chứng minh thư, với độ dài từ 9 đến 12 ký tự và chứa các ký tự số và chữ.
+    Birth: Đối tượng của lớp Time, lưu trữ thông tin ngày (có thể là ngày gửi tiền hay ngày sinh).
+    money: Số tiền gửi, phải lớn hơn 0.
+Các hàm thành viên:
+
+    in():
+    Nhập dữ liệu cho một tài khoản tiết kiệm, bao gồm tất cả các thuộc tính trên. Hàm này sẽ liên tục yêu cầu nhập lại cho đến khi tất cả dữ liệu đều hợp lệ (điều kiện kiểm tra được thực hiện qua hàm Accept()).
+
+    out():
+    Xuất ra tất cả các thông tin của tài khoản.
+
+Các hàm kiểm tra riêng (Check):
+
+    C_maso(): Kiểm tra mã số chỉ chứa ký tự chữ và số.
+    C_type_Save_money(): Kiểm tra loại tiết kiệm có nằm trong các giá trị cho phép ("Nganhan", "Daihan", "khongkyhan").
+    C_Name(): Kiểm tra tên chỉ chứa chữ cái và khoảng trắng.
+    C_ID_Card(): Kiểm tra ID_Card có độ dài hợp lệ (9-12 ký tự) và chỉ chứa số, chữ.
+    C_Birth(): Sử dụng hàm Accept() của lớp Time để kiểm tra tính hợp lệ của ngày.
+    C_money(): Đảm bảo số tiền gửi lớn hơn 0.
+    Accept():
+    Gọi các hàm kiểm tra trên và nếu có bất kỳ kiểm tra nào thất bại thì in thông báo lỗi tương ứng và trả về false, yêu cầu nhập lại dữ liệu.
+
+Update_money(double x):
+    Được khai báo để cập nhật số tiền (có thể tính lãi suất hoặc cập nhật theo tỉ lệ phần trăm), nhưng chưa được triển khai trong đoạn code hiện tại.
+    Các lớp và hàm chính
+ Các hàm chức năng bên ngoài lớp
+Tìm kiếm:
+
+    Compare_Name(string s1, string s2):
+       So sánh 2 chuỗi, kiểm tra xem chuỗi thứ hai có phải là một phần của chuỗi thứ nhất hay không (so sánh theo thứ tự các ký tự).
+    Search_with_ID_Card(Save_money Member[], ll quantity, string s):
+      Duyệt qua mảng các tài khoản, sử dụng Compare_Name để so sánh và tìm ra các tài khoản có ID_Card chứa chuỗi con s. Nếu tìm thấy, hiển thị thông tin của tài khoản đó.
+    Search_with_maso(Save_money Member[], ll quantity, string s):
+     Tương tự như tìm kiếm theo ID_Card nhưng tìm theo mã số tài khoản (maso).
+
+Lọc theo thời gian:
+
+    Before(Time a, Time b):
+    Hàm so sánh 2 đối tượng Time, trả về true nếu thời gian a trước b.
+    in_for_time(Save_money Member[], ll quantity):
+    Yêu cầu người dùng nhập vào hai mốc thời gian, sau đó liệt kê các tài khoản có thuộc tính Birth nằm trong khoảng thời gian đó.
+Sắp xếp:
+
+    cmp(Save_money a, Save_money b):
+        Hàm so sánh hai tài khoản theo số tiền gửi, dùng cho hàm sort của C++.
+    Arrange_money(Save_money Member[], ll quantity):
+        Sắp xếp mảng tài khoản theo số tiền gửi từ nhỏ đến lớn và hiển thị kết quả.
+    cmpBirth(Save_money a, Save_money b):
+        Hàm so sánh 2 tài khoản dựa trên thông tin thời gian (Birth), dùng cho việc sắp xếp theo ngày.
+    Arrange_Birth(Save_money Member[], ll quantity):
+        Sắp xếp mảng tài khoản theo thời gian (ngày tháng năm) và hiển thị danh sách đã sắp xếp.
+Luồng thực hiện chính (main)
+    Nhập số lượng tài khoản:
+    Người dùng nhập vào số lượng tài khoản cần xử lý.
+
+Nhập dữ liệu các tài khoản:
+    Tạo mảng động các đối tượng Save_money và gọi hàm in() cho từng tài khoản. Trong quá trình nhập, dữ liệu được kiểm tra hợp lệ qua hàm Accept(). Nếu dữ liệu không hợp lệ, chương trình sẽ yêu cầu nhập lại.
+
+Tìm kiếm thông tin:
+Chương trình cho phép người dùng tìm kiếm:
+
+    Theo ID_Card: Người dùng trả lời 'Y' để nhập chuỗi tìm kiếm và chương trình sẽ hiển thị các tài khoản có ID_Card chứa chuỗi đó.
+    Theo Mã số tài khoản (maso): Tương tự, cho phép tìm kiếm theo mã số.
+    Lọc theo khoảng thời gian:
+    Người dùng nhập vào hai mốc thời gian, sau đó chương trình lọc và hiển thị các tài khoản có thuộc tính Birth nằm trong khoảng đó.
+
+Sắp xếp và hiển thị:
+    Cuối cùng, chương trình sắp xếp danh sách tài khoản theo số tiền gửi và theo thời gian, rồi xuất ra màn hình.
+Test Case 1:
+3
+In_ID: Vn123
+Type_Money (Nganhan/Daihan/Khongkyhan): Nganhan
+Name: Tran Duc Manh
+In_ID_Card: 051206010947
+In_Time (day/month/year): 19 7 2006
+Money: 1000000000
+In_ID: Vn123
+Type_Money (Nganhan/Daihan/Khongkyhan): Daihan
+Name: Tran Khanh Trung Hieu
+In_ID_Card: 0935580124
+In_Time (day/month/year): 29 5 2002
+Money: 100000
+In_ID: Vn123
+Type_Money (Nganhan/Daihan/Khongkyhan): Nganhan
+Name: Nguyen Le Hai Anh
+In_ID_Card: 0555888999
+In_Time (day/month/year): 25 09 2006
+Money: 100000000
+Search_ID_Card (Y/N):   Y
+051
+
+Vn123
+Nganhan
+Tran Duc Manh
+051206010947
+19/7/2006
+1e+009
+Search_ID_Card (Y/N): N
+Search ID: (Y/N): Y
+Vn
+
+Vn123
+Nganhan
+Tran Duc Manh
+051206010947
+19/7/2006
+1e+009
+
+Vn123
+Daihan
+Tran Khanh Trung Hieu
+0935580124
+29/5/2002
+100000
+
+Vn123
+Nganhan
+Nguyen Le Hai Anh
+0555888999
+25/9/2006
+1e+008
+Search ID: (Y/N): N
+Time_first_check:
+19 7 1999
+Time_second_check:
+20 3 2025
+
+Arrange with money:
+Vn123
+Daihan
+Tran Khanh Trung Hieu
+0935580124
+29/5/2002
+100000
+
+Vn123
+Nganhan
+Nguyen Le Hai Anh
+0555888999
+25/9/2006
+1e+008
+
+Vn123
+Nganhan
+Tran Duc Manh
+051206010947
+19/7/2006
+1e+009
+Arrange with Time:
+Vn123
+Daihan
+Tran Khanh Trung Hieu
+0935580124
+29/5/2002
+100000
+
+Vn123
+Nganhan
+Tran Duc Manh
+051206010947
+19/7/2006
+1e+009
+
+Vn123
+Nganhan
+Nguyen Le Hai Anh
+0555888999
+25/9/2006
+1e+008

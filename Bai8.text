@@ -1,0 +1,179 @@
+Mô tả thuật toán và các hàm trong chương trình
+
+1. Tổng quan về chương trình
+
+Chương trình này quản lý thông tin về các chuyến bay, bao gồm mã chuyến bay, thời gian khởi hành (ngày, giờ), điểm đi và điểm đến. Các chức năng chính của chương trình gồm:
+- Nhập dữ liệu chuyến bay.
+- Kiểm tra dữ liệu hợp lệ.
+- Sắp xếp chuyến bay theo thời gian.
+- Tìm kiếm chuyến bay theo mã, địa điểm hoặc thời gian.
+- Hiển thị danh sách chuyến bay.
+
+2. Cấu trúc dữ liệu
+
+2.1. Struct `TimeStruct`
+
+Dùng để lưu thông tin ngày, tháng, năm của một chuyến bay.
+
+2.2. Class `sTime`
+
+Quản lý giờ và phút của chuyến bay.
+
+- `in()`: Nhập giờ và phút.
+- `getHour()`, `getMinute()`: Lấy giá trị giờ và phút.
+- `Accept()`: Kiểm tra giờ phút hợp lệ (giờ từ 0-23, phút từ 0-59).
+
+2.3. Class `Time`
+
+Quản lý ngày, tháng, năm của chuyến bay.
+
+- `in()`: Nhập ngày, tháng, năm.
+- `Leap_year_true_false()`: Kiểm tra năm nhuận.
+- `Leap_year()`: Điều chỉnh số ngày trong tháng 2 nếu là năm nhuận.
+- `Accept()`: Kiểm tra tính hợp lệ của ngày, tháng, năm.
+
+2.4. Class `fly`
+
+Quản lý thông tin chuyến bay:
+
+- Thuộc tính: mã chuyến bay, thời gian (ngày, giờ), điểm đi, điểm đến.
+- `updateTime()`: Chuyển đổi thời gian thành giây để dễ so sánh.
+- `fly_in()`: Nhập thông tin chuyến bay.
+- `fly_out()`: Xuất thông tin chuyến bay.
+- `Accept()`: Kiểm tra tính hợp lệ của dữ liệu.
+
+3. Các thuật toán chính
+
+3.1. Kiểm tra tính hợp lệ của dữ liệu
+
+- `C_ID_fly()`: Mã chuyến bay phải có độ dài ít nhất 5 ký tự.
+- `C_Time()`: Kiểm tra hợp lệ của ngày, giờ.
+- `trip()`: Kiểm tra điểm đi và điểm đến chỉ chứa chữ cái và khoảng trắng.
+- `Accept()`: Kiểm tra tất cả điều kiện trên.
+
+3.2. Sắp xếp danh sách chuyến bay
+
+Hàm `Sort_time()` sử dụng **thuật toán sắp xếp nhanh (quicksort)** dựa trên thời gian khởi hành của chuyến bay:
+
+1. Chuyển đổi thời gian khởi hành thành giây bằng `updateTime()`.
+2. Sắp xếp theo `RealTime`, nếu bằng nhau thì so sánh `sRealTime`.
+3. Xuất danh sách sau khi sắp xếp.
+
+3.3. Tìm kiếm chuyến bay
+
+- Theo mã chuyến bay (`Search_ID()`): Dùng hàm `Compare_Name()` để tìm mã khớp hoặc chứa chuỗi cần tìm.
+- Theo điểm đi (`Search_Home()`): Tương tự `Search_ID()` nhưng tìm theo điểm xuất phát.
+- Theo điểm đến (`Search_Disnation()`): Tìm theo điểm đến.
+- Theo điểm đi và ngày khởi hành (`Search_Home_Time()`): So sánh điểm đi và ngày bay.
+- Theo điểm đi và điểm đến (`Search_Home_Disnation()`): Đếm số chuyến bay từ điểm đi đến điểm đến.
+
+4. Hàm chính `main()`
+
+1. Nhập số lượng chuyến bay.
+2. Nhập dữ liệu từng chuyến bay.
+3. Sắp xếp danh sách theo thời gian khởi hành.
+4. Liên tục tìm kiếm theo yêu cầu của người dùng.
+
+Ưu điểm thuật toán:
+    Giao diện nhập tối Ưu
+    Tìm kiếm theo tên linh hoạt
+Nhược điểm thuật toán:
+    Nhập sai dữ liệu đầu vào dễ gây sai chương trình
+    Không biết ghi test case sao vì nhiều chức năng
+
+Test Case 1:
+Input:
+3
+VN123
+12 5 2025
+10 30
+Hanoi
+Ho Chi Minh City
+
+VN456
+11 5 2025
+9 45
+Da Nang
+Hanoi
+
+VN789
+10 5 2025
+15 20
+Ho Chi Minh City
+Da Nang
+Output:
+3
+IN_fly: Vn123
+IN_time_in (day/month/year): 12 5 2025
+IN_hour_in (hour/minute): 10 30
+IN_Home: Ha Noi
+IN_Disnation: HCM
+IN_fly: Vn456
+IN_time_in (day/month/year): 11 5 2025
+IN_hour_in (hour/minute): 9 45
+IN_Home: Da Nang
+IN_Disnation: Ha Noi
+IN_fly: Vn123
+IN_time_in (day/month/year): 10 5 2025
+IN_hour_in (hour/minute): 12 20
+IN_Home: HCM
+IN_Disnation: Da Nang
+List fly with time:
+
+Vn123
+10/5/2025
+12:20
+HCM to Da Nang
+
+Vn456
+11/5/2025
+9:45
+Da Nang to Ha Noi
+
+Vn123
+12/5/2025
+10:30
+Ha Noi to HCM
+SEARCH ID (Y/N): Y
+In_ID: Vn1
+
+Vn123
+10/5/2025
+12:20
+HCM to Da Nang
+
+Vn123
+12/5/2025
+10:30
+Ha Noi to HCM
+SEARCH ID (Y/N): N
+SEARCH Home (Y/N): Y
+In_Home: HCM
+
+Vn123
+10/5/2025
+12:20
+HCM to Da Nang
+SEARCH Home (Y/N): N
+SEARCH Disnation (Y/N): Y
+In_Disnation: Da Nang
+
+Vn123
+10/5/2025
+12:20
+HCM to Da Nang
+SEARCH Disnation (Y/N): N
+Search_Home_Time (Y/N): Y
+Search Home: HCM
+Search Time (day/month/year): 10 5 2025
+
+Vn123
+10/5/2025
+12:20
+HCM to Da Nang
+Search_Home_Time (Y/N): N
+Search_Home_to_Disnation (Y/N): Y
+Search local first: HCM
+Search local second: HN
+Member in HCM to local second is 0
+Search_Home_to_Disnation (Y/N): N
